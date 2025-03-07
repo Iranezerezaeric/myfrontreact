@@ -52,7 +52,7 @@ function UsersPage() {
               <Grid item xs={12} sm={6}>
                 <TextField
                   id="champ1" 
-                  label="First name" 
+                  label="Nom" 
                   value={formValues.champ1} 
                   onChange={handleInputChange} 
                   fullWidth
@@ -67,7 +67,7 @@ function UsersPage() {
               <Grid item xs={12} sm={6}>
                 <TextField
                   id="champ2" 
-                  label="Second name" 
+                  label="Prénom" 
                   value={formValues.champ2} 
                   onChange={handleInputChange} 
                   fullWidth
@@ -97,7 +97,7 @@ function UsersPage() {
               <Grid item xs={12} sm={6}>
                 <TextField
                   id="champ4" 
-                  label="Number" 
+                  label="Téléphone" 
                   value={formValues.champ4} 
                   onChange={handleInputChange} 
                   fullWidth
@@ -113,7 +113,7 @@ function UsersPage() {
               <Grid item xs={12} sm={6}>
                 <TextField
                   id="champ5"
-                  label="Adress" 
+                  label="Adresse" 
                   value={formValues.champ5} 
                   onChange={handleInputChange} 
                   fullWidth
@@ -128,7 +128,7 @@ function UsersPage() {
               <Grid item xs={12} sm={6}>
                 <TextField
                   id="champ6" 
-                  label="Username" 
+                  label="Nom d'utilisateur" 
                   value={formValues.champ6} 
                   onChange={handleInputChange} 
                   fullWidth

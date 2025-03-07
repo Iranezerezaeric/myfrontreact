@@ -1,8 +1,7 @@
-// src/components/navbar/Navbar.js
 import React, { useState } from 'react';
-import { AppBar, Toolbar, Typography, Button, Menu, MenuItem, IconButton } from '@mui/material';
-import { MoreVert } from '@mui/icons-material';
-import { Link } from 'react-router-dom';  
+import { AppBar, Toolbar, Typography, Button, Menu, MenuItem, IconButton, Box } from '@mui/material';
+import { MoreVert, Home, List, Task, Timeline, Assignment,Logout } from '@mui/icons-material';
+import { Link, NavLink } from 'react-router-dom';  
 
 function Navbar() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -16,27 +15,53 @@ function Navbar() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{ backgroundColor: '#1E88E5' }}>
       <Toolbar>
-        <Typography variant="h6" style={{ flexGrow: 1 }}>
-          Gestion des taches
+        <Typography variant="h6" sx={{ flexGrow: 1 }}>
+          Gestion des tâches
         </Typography>
 
-        <Button color="inherit" component={Link} to="/">
-          Utilisateur
-        </Button>
-        <Button color="inherit" component={Link} to="/liste">
-          Liste
-        </Button>
-        <Button color="inherit" component={Link} to="/project">
-          Projet
-        </Button>
-        <Button color="inherit" component={Link} to="/task">
-          Taches
-        </Button>
-        <Button color="inherit" component={Link} to="/progression">
-          Progression des taches
-        </Button>
+        <Box sx={{ display: 'flex', gap: 2 }}>
+          <Button
+            color="inherit"
+            component={NavLink}
+            to="/"
+          >
+            <Home sx={{ mr: 1 }} /> Utilisateur
+          </Button>
+          
+          <Button
+            color="inherit"
+            component={NavLink}
+            to="/liste"
+          >
+            <List sx={{ mr: 1 }} /> Liste
+          </Button>
+          
+          <Button
+            color="inherit"
+            component={NavLink}
+            to="/project"
+          >
+            <Assignment sx={{ mr: 1 }} /> Projet
+          </Button>
+
+          <Button
+            color="inherit"
+            component={NavLink}
+            to="/task"
+          >
+            <Task sx={{ mr: 1 }} /> Tâches
+          </Button>
+
+          <Button
+            color="inherit"
+            component={NavLink}
+            to="/progression"
+          >
+            <Timeline sx={{ mr: 1 }} /> Progression
+          </Button>
+        </Box>
         <IconButton edge="end" color="inherit" onClick={handleClick}>
           <MoreVert />
         </IconButton>
@@ -46,7 +71,10 @@ function Navbar() {
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <MenuItem onClick={handleClose}>Déconnexion</MenuItem>
+          <MenuItem onClick={handleClose} component={Link} to="/listeprojet">
+          <List sx={{ mr: 1 }} /> Liste des projets
+          </MenuItem>
+          <MenuItem onClick={handleClose} component={Link} to="/login"><Logout sx={{ mr: 1 }}/>Déconnexion</MenuItem>
         </Menu>
       </Toolbar>
     </AppBar>

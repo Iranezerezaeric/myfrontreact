@@ -1,6 +1,6 @@
 import React from "react";
-import { Box, Grid, Paper, Typography, LinearProgress, Card, CardContent } from "@mui/material";
-import { AccessTime, Person, Task } from "@mui/icons-material";
+import { Box, Paper, Typography, LinearProgress, Card, CardContent, IconButton } from "@mui/material";
+import { AccessTime, Person, Task, Edit } from "@mui/icons-material";
 
 function ActivityCard() {
   const activity = {
@@ -8,7 +8,7 @@ function ActivityCard() {
     members: [
       { name: "Jean Ciza", progress: 65, activity: "Maintenance serveur" },
       { name: "Audry Kana", progress: 45, activity: "Mise à jour système" },
-      { name: "Sophie Ngabire", progress: 80, activity: "Déploiement réseau" },
+      { name: "Sophie Ngabire", progress: 70, activity: "Déploiement réseau" },
     ],
     startDate: "01-03-2025",
     endDate: "12-03-2025",
@@ -21,7 +21,6 @@ function ActivityCard() {
           Détails de l'activité
         </Typography>
         <Box sx={{ width: "100%", maxWidth: 900, margin: "0 auto", padding: 3 }}>
-            
           <Paper sx={{ padding: 3, marginBottom: 3 }}>
             <Typography variant="h6" sx={{ display: "flex", alignItems: "center", gap: 1 }}>
               <Task fontSize="large" />
@@ -33,11 +32,10 @@ function ActivityCard() {
             </Typography>
           </Paper>
 
-          {/* Cartes individuelles pour chaque membre */}
-          <Grid container spacing={3}>
+          <Box sx={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
             {activity.members.map((member, index) => (
-              <Grid item xs={12} sm={4} key={index}>
-                <Card sx={{ boxShadow: 3 }}>
+              <Box key={index} sx={{ flex: "1 1 calc(33.333% - 24px)" }}>
+                <Card sx={{ boxShadow: 3, position: 'relative' }}>
                   <CardContent>
                     <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
                       <Person fontSize="large" />
@@ -55,10 +53,23 @@ function ActivityCard() {
                       {member.progress}% complété
                     </Typography>
                   </CardContent>
+
+                  <IconButton 
+                    sx={{
+                      position: 'absolute', 
+                      bottom: 8, 
+                      right: 8, 
+                      color: 'primary',
+                      cursor: 'pointer'
+                    }}
+                    disabled
+                  >
+                    <Edit />
+                  </IconButton>
                 </Card>
-              </Grid>
+              </Box>
             ))}
-          </Grid>
+          </Box>
         </Box>
       </header>
     </div>
