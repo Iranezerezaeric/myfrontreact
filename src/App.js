@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';  
 import UsersPage from './pages/users/UsersPages';  
 import ListPage from './pages/users/ListPage';    
@@ -10,16 +9,13 @@ import ProjectTask from './pages/projects/ProjectTask';
 import ActivityCard from './pages/projects/ActivityCard';
 import ListProjet from './pages/projects/ListProjet';
 import Login from './pages/login/Login';
+import TasksPage from './pages/projects/Tasks';
+import RoleAssignment from './pages/users/Role';
 
 function App() {
-  const theme = createTheme({
-    palette: {
-      mode: 'light',  
-    },
-  });
+
 
   return (
-    <ThemeProvider theme={theme}>
       <Router> 
         <div className="App">
           <Routes>
@@ -79,10 +75,29 @@ function App() {
                 </>
               }
             />
+              <Route
+              path="/tasks"
+              element={
+                <>
+                  <Navbar />
+                  <TasksPage />
+                </>
+                
+              }
+            />
+            <Route
+              path="/role"
+              element={
+                <>
+                  <Navbar />
+                  <RoleAssignment />
+                </>
+                
+              }
+            />
           </Routes>
         </div>
       </Router>
-    </ThemeProvider>
   );
 }
 
