@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Typography, Grid, Card, CardContent, MenuItem, Select, FormControl, InputLabel, Button } from '@mui/material';
+import { Box, Typography, Card, CardContent, MenuItem, Select, FormControl, InputLabel, Button } from '@mui/material';
 
 const users = [
   { id: 1, name: 'Utilisateur 1', email: 'utilisateur1@example.com', role: 'Admin' },
@@ -26,10 +26,10 @@ function RoleAssignment() {
         Attribution des rôles
       </Typography>
 
-      <Grid container spacing={3}>
+      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 3 }}>
         {userRoles.map((user) => (
-          <Grid item xs={12} sm={6} md={4} key={user.id}>
-            <Card sx={{ boxShadow: 2 }}>
+          <Box key={user.id} sx={{ width: 'calc(33.333% - 24px)' }}>
+            <Card sx={{ border: '1px solid #ddd' }}>
               <CardContent>
                 <Typography variant="h6">{user.name}</Typography>
                 <Typography variant="body2" color="textSecondary">{user.email}</Typography>
@@ -50,12 +50,12 @@ function RoleAssignment() {
                 </FormControl>
               </CardContent>
             </Card>
-          </Grid>
+          </Box>
         ))}
-      </Grid>
+      </Box>
 
       <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: 3 }}>
-        <Button variant="contained" color="primary" >
+        <Button variant="contained" color="primary">
           Sauvegarder les modifications
         </Button>
       </Box>

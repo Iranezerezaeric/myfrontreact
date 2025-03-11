@@ -1,21 +1,28 @@
 import React from 'react';
-import { Box, Typography, Grid, Card, CardContent, Button, Chip } from '@mui/material';
+import { Box, Typography, Card, CardContent, Button, Chip } from '@mui/material';
 
 const tasks = [
   { id: 1, title: 'Tâche 1', priority: 'Haute', status: 'En cours', deadline: '2025-05-15' },
   { id: 2, title: 'Tâche 2', priority: 'Moyenne', status: 'Terminé', deadline: '2025-06-01' },
   { id: 3, title: 'Tâche 3', priority: 'Basse', status: 'Non commencé', deadline: '2025-07-10' },
-
 ];
 
 function TasksPage() {
   return (
     <Box sx={{ padding: 3 }}>
       <Typography variant="h4" gutterBottom>Liste des Tâches</Typography>
-      <Grid container spacing={3}>
+      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 3 }}>
         {tasks.map((task) => (
-          <Grid item xs={12} sm={4} key={task.id}>
-            <Card sx={{ boxShadow: 3, padding: 2, height: '180px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+          <Box key={task.id} sx={{ flex: '1 1 calc(33.333% - 24px)', display: 'flex', flexDirection: 'column' }}>
+            <Card sx={{ 
+              padding: 2, 
+              height: '180px', 
+              display: 'flex', 
+              flexDirection: 'column', 
+              justifyContent: 'space-between', 
+              border: '1px solid #ccc', 
+              borderRadius: 2 
+            }}>
               <CardContent>
                 <Typography variant="h6">{task.title}</Typography>
                 <Typography variant="body2" color="text.secondary">Deadline: {task.deadline}</Typography>
@@ -26,9 +33,9 @@ function TasksPage() {
                 Mettre à jour
               </Button>
             </Card>
-          </Grid>
+          </Box>
         ))}
-      </Grid>
+      </Box>
     </Box>
   );
 }

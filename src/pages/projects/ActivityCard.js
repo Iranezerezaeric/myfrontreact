@@ -6,7 +6,7 @@ function ActivityCard() {
   const activity = {
     name: "Gestion des tâches de maintenance",
     members: [
-      { name: "Jean Ciza", progress: 65, activity: "Maintenance serveur" },
+      { name: "Jean Ciza", progress: 90, activity: "Maintenance serveur" },
       { name: "Audry Kana", progress: 45, activity: "Mise à jour système" },
       { name: "Sophie Ngabire", progress: 70, activity: "Déploiement réseau" },
     ],
@@ -35,7 +35,11 @@ function ActivityCard() {
           <Box sx={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
             {activity.members.map((member, index) => (
               <Box key={index} sx={{ flex: "1 1 calc(33.333% - 24px)" }}>
-                <Card sx={{ boxShadow: 3, position: 'relative' }}>
+                <Card sx={{ 
+                  position: 'relative', 
+                  border: '1px solid #ccc', 
+                  borderRadius: 2
+                }}>
                   <CardContent>
                     <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
                       <Person fontSize="large" />
