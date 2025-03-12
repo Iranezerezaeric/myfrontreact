@@ -3,6 +3,8 @@ import React from 'react';
 import { Box, Typography, Grid, Card, CardContent,IconButton} from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';  
 import { Edit as EditIcon, Delete as DeleteIcon } from "@mui/icons-material";
+import Swal from "sweetalert2"; 
+
 
 
 // Exemple de données statiques pour la liste des utilisateurs
@@ -33,7 +35,7 @@ const columns = [
           <EditIcon />
         </IconButton>
         
-        <IconButton color="error" >
+        <IconButton color="error"  onClick={() => handleDelete()} > 
           <DeleteIcon />
         </IconButton>
       </div>
@@ -41,7 +43,26 @@ const columns = [
   },
 ];
 
-// Données statiques pour les cartes
+const handleDelete = () => {
+  Swal.fire({
+    title: 'Êtes-vous sûr ?',
+    text: 'Voulez-vous vraiment arreter cet utilisateur ?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Oui, arreter',
+    cancelButtonText: 'Annuler',
+    reverseButtons: true
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire(
+        'Supprimé !',
+        'L\'utilisateur a été arreté avec succes.',
+        'success'
+      );
+    }
+  });
+};
+
 const cardsData = [
   { title: 'Nombre d\'utilisateurs', content: '50', color: '#4caf50' },
   { title: 'Utilisateurs actifs', content: '40', color: '#3f51b5' }, 
@@ -69,7 +90,7 @@ function ListPage() {
                 justifyContent: 'center',
                 alignItems: 'center',
                 color: '#fff',  
-                transition: 'transform 0.3s ease',  // Transition pour un effet au survol
+                transition: 'transform 0.3s ease',  
                 '&:hover': {
                   transform: 'scale(1.05)',  // Agrandissement au survol
                   boxShadow: 3,  // Ombre plus marquée au survol

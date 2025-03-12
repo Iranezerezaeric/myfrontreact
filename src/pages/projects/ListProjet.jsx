@@ -2,9 +2,10 @@ import { Box, Typography, IconButton } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { Edit as EditIcon, Delete as DeleteIcon } from "@mui/icons-material";
 import React from "react";
+import Swal from "sweetalert2"; 
 
 const rows = [
-  { id: 1, name: 'School Master', description: 'Projet de gestion scolaire', date1: '12-03-2025', date2: '30-03-2025' },
+  { id: 1, name: 'School Master', description: 'Projet de gestion scolaire', date1: '12-03-2025', date2: '30-03-2025' },
   { id: 2, name: 'Swift POS', description: 'Projet de gestion des entrées et sorties', date1: '12-04-2025', date2: '30-04-2025' },
   { id: 3, name: 'Voice recognize', description: 'Projet de reconaissance vocal', date1: '12-04-2025', date2: '15-04-2025' },
   { id: 4, name: 'School', description: 'Projet de gestion scolaire', date1: '12-03-2025', date2: '30-03-2025' },
@@ -22,11 +23,14 @@ const columns = [
     width: 150,
     renderCell: () => (
       <div>
-        <IconButton color="primary" >
+        <IconButton color="primary">
           <EditIcon />
         </IconButton>
         
-        <IconButton color="error" >
+        <IconButton
+          color="error"
+          onClick={() => handleDelete()} 
+        >
           <DeleteIcon />
         </IconButton>
       </div>
@@ -34,6 +38,25 @@ const columns = [
   },
 ];
 
+const handleDelete = () => {
+  Swal.fire({
+    title: 'Êtes-vous sûr ?',
+    text: 'Voulez-vous vraiment supprimer ce projet ?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Oui, supprimer',
+    cancelButtonText: 'Annuler',
+    reverseButtons: true
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire(
+        'Supprimé !',
+        'Le projet a été supprimé.',
+        'success'
+      );
+    }
+  });
+};
 function ListProjet() {
   return (
     <Box sx={{ padding: 3 }}>
